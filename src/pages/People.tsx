@@ -1,13 +1,22 @@
-import React from "react"
-import {usePeopleStore} from "../store/store";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
+import React, { useEffect } from "react"
+import { usePeopleStore} from "../store/store";
+import { CardContent, Typography, Box } from "@mui/material"
+import { PeopleSkeleton } from "../ui/skeletons";
+import { useParams } from "react-router-dom";
+import { NotFound } from "../components/NotFound";
 export const People = () => {
     const activePeople = usePeopleStore(state => state.activePeople)
+    const fetchActivePeople = usePeopleStore(state => state.fetchActivePeople)
+    const { cardId } = useParams();
+
+    useEffect(() => {
+        if (Object.keys(activePeople).length === 0) {
+            fetchActivePeople(Number(cardId))
+        }
+    }, [])
     return (
-        <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-            <CardContent sx={{ flexGrow: 1 }}>
+        <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', pt: '100px' }}>
+            {Object.keys(activePeople).length === 0 ? <PeopleSkeleton /> : activePeople.detail !== 'Not found' ? <CardContent sx={{ flexGrow: 1 }}>
                 <Typography gutterBottom variant="h5" component="h2" sx={{textAlign: 'center'}}>
                     name: {activePeople.name}
                 </Typography>
@@ -20,7 +29,7 @@ export const People = () => {
                 <Typography gutterBottom variant="h5" component="h2" sx={{textAlign: 'center'}}>
                     eyes: {activePeople.eye_color}
                 </Typography>
-            </CardContent>
+            </CardContent> : <NotFound />}
         </Box>
     )
 }

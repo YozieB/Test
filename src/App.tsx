@@ -1,28 +1,24 @@
 import * as React from 'react';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Home} from "./pages/Home";
-import {People} from "./pages/People";
-import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import {usePeopleStore} from "./store/store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { AppBar, Toolbar, Typography, CssBaseline } from "@mui/material";
+import { Home } from "./pages/Home";
+import { People } from "./pages/People";
+import { NotFound } from "./components/NotFound";
 
 
 const defaultTheme = createTheme();
 
 export default function App() {
-    const activePeople = usePeopleStore(state => state.activePeople)
-
     const router = createBrowserRouter([
         {
             path: '/',
             element: <Home />,
+            errorElement: <NotFound />,
         },
         {
             path: '/card/:cardId',
-            element: Object.keys(activePeople).length !== 0 && <People />,
+            element: <People />
         }
     ])
 

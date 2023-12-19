@@ -4,6 +4,7 @@ import {IPeople, IPeopleStore} from "../interfaces";
 export const usePeopleStore = create<IPeopleStore>((set, get) => ({
     people: [],
     page: 1,
+    isActivePeopleLoading: false,
     activePeople: <IPeople>{},
     setActivePeople: (value: IPeople) => {
         set(() => ({
@@ -26,5 +27,20 @@ export const usePeopleStore = create<IPeopleStore>((set, get) => ({
                 }))
             })
             .finally(() => set(() => ({isPeopleLoading: false})))
+    },
+    fetchActivePeople: (id: number) => {
+        set(() => ({
+            isActivePeopleLoading: true,
+        }))
+        fetch(`https://swapi.dev/api/people/${id}`, {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(data => {
+                set(state => ({
+                    activePeople: data
+                }))
+            })
+            .finally(() => set(() => ({isActivePeopleLoading: false})))
     }
 }))

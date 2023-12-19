@@ -5,6 +5,8 @@ export interface IPeopleStore {
     setActivePeople: (value: IPeople) => void;
     activePeople: IPeople;
     fetchPeople: () => void;
+    fetchActivePeople: (id: number) => void;
+    isActivePeopleLoading: boolean;
 }
 
 export interface IFilm {
@@ -24,6 +26,7 @@ export interface IFilm {
     vehicles: string[] | IVehicle[];
 }
 export interface IPeople {
+    detail: string | undefined;
     birth_year: string;
     eye_color: string;
     films: string[] | IFilm[];

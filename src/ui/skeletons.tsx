@@ -10,3 +10,14 @@ export const CardSkeleton = () => {
         </Box>
     );
 }
+
+export const PeopleSkeleton = () => {
+    return(
+        <Box sx={{ height: '100%', minHeight: '200px', display: 'flex', flexDirection: 'column' }}>
+            <Skeleton sx={{mx: 'auto'}} width="200px" height={40} />
+            <Skeleton sx={{mx: 'auto'}} width="200px" height={40} />
+            <Skeleton sx={{mx: 'auto'}} width="200px" height={40} />
+            <Skeleton sx={{mx: 'auto'}} width="200px" height={40} />
+        </Box>
+    )
+}
