@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AppBar, Toolbar, Typography, CssBaseline } from "@mui/material";
 import { Home } from "./pages/Home";
 import { People } from "./pages/People";
 import { NotFound } from "./components/NotFound";
-
 
 const defaultTheme = createTheme();
 

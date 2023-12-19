@@ -1,10 +1,10 @@
 import React from "react";
-import { Typography, Container, Grid, Card, CardContent, CardActions, Button} from "@mui/material"
-import { CardSkeleton } from "../ui/skeletons";
-import { LoadingButton } from "@mui/lab";
-import { usePeopleStore } from "../store/store";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Typography, Container, Grid, Card, CardContent, CardActions, Button } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { CardSkeleton } from "../ui/skeletons";
+import { usePeopleStore } from "../store/store";
 import { IPeople } from "../interfaces";
 
 export const Home = () => {

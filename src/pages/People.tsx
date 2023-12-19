@@ -1,9 +1,11 @@
-import React, { useEffect } from "react"
+import React from "react";
+import { useEffect } from "react";
 import { usePeopleStore} from "../store/store";
-import { CardContent, Typography, Box } from "@mui/material"
+import { CardContent, Typography, Box } from "@mui/material";
 import { PeopleSkeleton } from "../ui/skeletons";
 import { useParams } from "react-router-dom";
 import { NotFound } from "../components/NotFound";
+
 export const People = () => {
     const activePeople = usePeopleStore(state => state.activePeople)
     const fetchActivePeople = usePeopleStore(state => state.fetchActivePeople)

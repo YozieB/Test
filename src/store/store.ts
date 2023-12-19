@@ -1,5 +1,5 @@
-import {create} from "zustand";
-import {IPeople, IPeopleStore} from "../interfaces";
+import { create } from "zustand";
+import { IPeople, IPeopleStore } from "../interfaces";
 
 export const usePeopleStore = create<IPeopleStore>((set, get) => ({
     people: [],
