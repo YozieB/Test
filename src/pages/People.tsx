@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
-import { usePeopleStore} from "../store/store";
+import { useParams } from "react-router-dom";
 import { CardContent, Typography, Box } from "@mui/material";
 import { PeopleSkeleton } from "../ui/skeletons";
-import { useParams } from "react-router-dom";
 import { NotFound } from "../components/NotFound";
+import { usePeopleStore } from "../store/store";
 
 export const People = () => {
     const activePeople = usePeopleStore(state => state.activePeople)
